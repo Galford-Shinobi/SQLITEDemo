@@ -1,4 +1,5 @@
 ﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
 
 namespace SQLITEDemo.MVVM.Models
 {
@@ -11,7 +12,7 @@ namespace SQLITEDemo.MVVM.Models
         
         public string Name { get; set; }
       
-        [MaxLength(15), Unique]
+        [MaxLength(50), Unique]
         public string Phone { get; set; }
 
         public int Age { get; set; }
@@ -26,5 +27,8 @@ namespace SQLITEDemo.MVVM.Models
 
         [Ignore]
         public string MyFullName => $"{Name}{" - "}{Email}";
+
+        [ManyToMany(typeof(Passport), CascadeOperations = CascadeOperation.All)]
+        public List<Passport> Passport { get; set; }
     }
 }

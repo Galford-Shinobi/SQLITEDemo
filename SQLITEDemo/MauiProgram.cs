@@ -1,4 +1,7 @@
-﻿namespace SQLITEDemo;
+﻿using SQLITEDemo.MVVM.Models;
+using SQLITEDemo.Repositories;
+
+namespace SQLITEDemo;
 
 public static class MauiProgram
 {
@@ -13,6 +16,11 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
-		return builder.Build();
+        builder.Services.AddSingleton<CustomerModelRepository>();
+        builder.Services.AddSingleton<BaseRepository<Customer>>();
+        builder.Services.AddSingleton<BaseRepository<Order>>();
+        builder.Services.AddSingleton<BaseRepository<Passport>>();
+
+        return builder.Build();
 	}
 }

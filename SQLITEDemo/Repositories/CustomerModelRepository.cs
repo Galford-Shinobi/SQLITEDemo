@@ -102,7 +102,7 @@ namespace SQLITEDemo.Repositories
             return null;
         }
 
-        public void Delete(int customerId)
+        public void DeleteItem(int customerId)
         {
             try
             {
